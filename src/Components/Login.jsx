@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 function Login(){
     const LoginAPI = "https://6924d26482b59600d7217be2.mockapi.io/LoginVerification"
@@ -12,7 +12,13 @@ function Login(){
         fetch(LoginAPI)
         .then(response=>response.json())
         .then((data)=>{
-            console.log(data)
+            const userdata=(data.find(d=>d.username===username))
+            if(username===userdata.username && password===userdata.password){
+                console.log("successful login")
+            }
+            else{
+                console.log("unsuccessful login")
+            }
         })
     }
 
