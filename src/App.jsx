@@ -5,10 +5,14 @@ import Progress from "./Components/Progress"
 import EditSession from "./Components/EditSession"
 import Settings from "./Components/Settings"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
+import { UsernameContext } from "./UsernameContext"
+import { useState } from "react"
 function App(){
+  const [username, setUsername] = useState("")
 
   return(
     <>
+      <UsernameContext.Provider value={{username, setUsername}}>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Login/>} />
@@ -19,6 +23,7 @@ function App(){
           <Route path="/settings" element={<Settings/>} />
         </Routes>
       </BrowserRouter>
+      </UsernameContext.Provider>
     </>
   )
 }

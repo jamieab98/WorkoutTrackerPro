@@ -1,11 +1,12 @@
 import { useNavigate } from "react-router-dom"
-import { useState } from "react"
+import { useState, useContext } from "react"
+import { UsernameContext } from "../UsernameContext"
 import "../Styling/Login.css"
 
 function Login(){
     const LoginAPI = "https://6924d26482b59600d7217be2.mockapi.io/LoginVerification"
     const navigate = useNavigate()
-    const [username, setUsername] = useState("")
+    const {username, setUsername} = useContext(UsernameContext)
     const [password, setPassword] = useState("")
     const [errorMessage, setErrorMessage] = useState("")
     
