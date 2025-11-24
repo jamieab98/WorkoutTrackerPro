@@ -9,7 +9,7 @@ function Login(){
     return(
         <>
             <h2>Login Page</h2>
-            <button>Login</button>
+            <button onClick={handleLogin}>Login</button>
         </>
     )
 }
