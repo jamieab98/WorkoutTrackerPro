@@ -1,4 +1,9 @@
 import Login from "./Components/Login"
+import Home from "./Components/Home"
+import NewSession from "./Components/NewSession"
+import Progress from "./Components/Progress"
+import EditSession from "./Components/EditSession"
+import Settings from "./Components/Settings"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 function App(){
 
@@ -6,14 +11,13 @@ function App(){
     <>
       <BrowserRouter>
         <Routes>
-          <h1>Workout Tracker Pro</h1>
           <Route path="/" element={<Login/>} />
           <Route path="/home" element={<Home/>} />
           <Route path="/newsession" element={<NewSession/>} />
           <Route path="/progress" element={<Progress/>} />
           <Route path="/editsession" element={<EditSession/>} />
           <Route path="/settings" element={<Settings/>} />
-      </Routes>
+        </Routes>
       </BrowserRouter>
     </>
   )
