@@ -1,13 +1,14 @@
 import { Link } from "react-router-dom"
+import "../Styling/NavigationBar.css"
 function NavigationBar(){
 
     return(
         <>
-            <Link to="/home">Home</Link>
-            <Link to="/newsession">New Session</Link>
-            <Link to="/progress">Progress</Link>
-            <Link to="/editsession">Edit Session</Link>
-            <Link to="/settings">Settings</Link>
+            <Link to="/home" className="link">Home</Link>
+            <Link to="/newsession" className="link">New Session</Link>
+            <Link to="/progress" className="link">Progress</Link>
+            <Link to="/editsession" className="link">Edit Session</Link>
+            <Link to="/settings" className="link">Settings</Link>
         </>
     )
 }
