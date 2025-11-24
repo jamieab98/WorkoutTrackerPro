@@ -1,23 +1,33 @@
 import { useNavigate } from "react-router-dom"
-import { useEffect, useState } from "react"
+import { useState } from "react"
+import "../Styling/Login.css"
 
 function Login(){
     const LoginAPI = "https://6924d26482b59600d7217be2.mockapi.io/LoginVerification"
     const navigate = useNavigate()
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
+    const [errorMessage, setErrorMessage] = useState("")
     
     function handleLogin(e){
         e.preventDefault()
+        setErrorMessage("")
         fetch(LoginAPI)
         .then(response=>response.json())
         .then((data)=>{
             const userdata=(data.find(d=>d.username===username))
-            if(username===userdata.username && password===userdata.password){
-                console.log("successful login")
+            const existingUsernames=(data.map(d=>d.username))
+            if(!existingUsernames.includes(username)){
+                setErrorMessage("username does not exist")
+            }
+            else if(username===userdata.username && password===userdata.password){
+                navigate("/home")
+            }
+            else if(username===userdata.username && password!==userdata.password){
+                setErrorMessage("incorrect password")
             }
             else{
-                console.log("unsuccessful login")
+                setErrorMessage("failed login")
             }
         })
     }
@@ -32,6 +42,7 @@ function Login(){
                 <input type="text" placeholder="password" id="password" value={password} onChange={(e)=>setPassword(e.target.value)}></input>
                 <button type="submit">Login</button>
             </form>
+            <p className="errorMessage">{errorMessage}</p>
         </>
     )
 }
