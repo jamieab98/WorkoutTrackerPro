@@ -43,6 +43,7 @@ function NewSession(){
         .then((data)=>{
             setWorkout([])
             setExerciseDate("")
+            navigate("/home")
         })
     }
 
