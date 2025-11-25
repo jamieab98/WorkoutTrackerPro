@@ -7,6 +7,7 @@ function Home(){
     const {username} = useContext(UsernameContext)
     const [workoutData, setWorkoutData] = useState([])
     const workoutsAPI = `https://6924d26482b59600d7217be2.mockapi.io/jamieab98workouts`
+    
     useEffect(()=>{
         fetch(workoutsAPI)
         .then(response=>response.json())
@@ -14,6 +15,8 @@ function Home(){
             setWorkoutData(data)
         })
     }, [])
+    
+    //ToDo: Make it so the workouts load in order of date and not by id number//
 
     return(
         <>
