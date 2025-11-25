@@ -10,7 +10,7 @@ function NewSession(){
     const [exerciseSets, setExerciseSets] = useState(0)
     const [exerciseReps, setExerciseReps] = useState(0)
     const [exerciseDate, setExerciseDate] = useState("")
-    const [workout, setWorkout] = useState([])
+    const [dailyWorkout, setDailyWorkout] = useState([])
     const navigate = useNavigate()
 
     function enterExercise(e){
@@ -21,7 +21,7 @@ function NewSession(){
             "sets": exerciseSets,
             "reps": exerciseReps
         }
-        setWorkout([...workout, exercise])
+        setDailyWorkout([...dailyWorkout, exercise])
         setExerciseName("")
         setExerciseWeight(0)
         setExerciseSets(0)
@@ -35,13 +35,13 @@ function NewSession(){
             body: JSON.stringify(
                 {
                 "date": exerciseDate,
-                "workout": workout,
+                "workout": dailyWorkout,
                 "id": uuidv4()
             })
         })
         .then(response=>response.json())
         .then((data)=>{
-            setWorkout([])
+            setDailyWorkout([])
             setExerciseDate("")
             navigate("/home")
         })

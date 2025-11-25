@@ -9,10 +9,11 @@ import { UsernameContext } from "./UsernameContext"
 import { useState } from "react"
 function App(){
   const [username, setUsername] = useState("")
+  const [workoutData, setWorkoutData] = useState([])
 
   return(
     <>
-      <UsernameContext.Provider value={{username, setUsername}}>
+      <UsernameContext.Provider value={{username, setUsername, workoutData, setWorkoutData}}>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Login/>} />

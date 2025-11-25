@@ -1,10 +1,11 @@
 import NavigationBar from "./NavigationBar"
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
+import { UsernameContext } from "../UsernameContext"
 
 function Progress(){
     const workoutsAPI = `https://6924d26482b59600d7217be2.mockapi.io/jamieab98workouts`
+    const {workoutData, setWorkoutData} = useContext(UsernameContext)
     const [searchedExercise, setSearchedExercise] = useState("")
-    const [workoutData, setWorkoutData] = useState([])
     
     useEffect(()=>{
         fetch(workoutsAPI)

@@ -4,8 +4,7 @@ import { useContext, useEffect, useState } from "react"
 import DailyWorkout from "./DailyWorkout"
 
 function Home(){
-    const {username} = useContext(UsernameContext)
-    const [workoutData, setWorkoutData] = useState([])
+    const {username, workoutData, setWorkoutData} = useContext(UsernameContext)
     const workoutsAPI = `https://6924d26482b59600d7217be2.mockapi.io/jamieab98workouts`
     
     useEffect(()=>{
