@@ -6,7 +6,7 @@ import DailyWorkout from "./DailyWorkout"
 function Home(){
     const {username} = useContext(UsernameContext)
     const [workoutData, setWorkoutData] = useState([])
-    const workoutsAPI = `https://6924d26482b59600d7217be2.mockapi.io/${username}workouts`
+    const workoutsAPI = `https://6924d26482b59600d7217be2.mockapi.io/jamieab98workouts`
     useEffect(()=>{
         fetch(workoutsAPI)
         .then(response=>response.json())

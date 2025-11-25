@@ -1,0 +1,14 @@
+.dailyworkout{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black
+}
+.date{
+    font-weight: 1000;
+}
+.exerciseinfocontainer{
+    display: flex
+}
+.exercise{
+    width: 10%
+}
