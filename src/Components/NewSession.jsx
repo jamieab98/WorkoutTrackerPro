@@ -27,7 +27,21 @@ function NewSession(){
     }
 
     function enterWorkout(){
-        console.log(workout)
+        fetch(workoutsAPI, {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(
+                {
+                "date": exerciseDate,
+                "workout": workout,
+                "id": uuidv4()
+            })
+        })
+        .then(response=>response.json())
+        .then((data)=>{
+            setWorkout([])
+            setExerciseDate("")
+        })
     }
 
     return(
