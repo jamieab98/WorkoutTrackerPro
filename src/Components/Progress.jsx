@@ -20,7 +20,6 @@ function Progress(){
                     setListOfExercises(prev=>[...prev, ex])
                 })
             })
-            console.log(data)
         })
     }, [])
 
