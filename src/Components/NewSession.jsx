@@ -17,9 +17,9 @@ function NewSession(){
         e.preventDefault()
         const exercise = {
             "exercise": exerciseName,
-            "weight": exerciseWeight,
-            "sets": exerciseSets,
-            "reps": exerciseReps
+            "weight": Number(exerciseWeight),
+            "sets": Number(exerciseSets),
+            "reps": Number(exerciseReps)
         }
         setDailyWorkout([...dailyWorkout, exercise])
         setExerciseName("")

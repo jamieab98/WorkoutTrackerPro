@@ -6,15 +6,25 @@ function Progress(){
     const workoutsAPI = `https://6924d26482b59600d7217be2.mockapi.io/jamieab98workouts`
     const {workoutData, setWorkoutData} = useContext(UsernameContext)
     const [searchedExercise, setSearchedExercise] = useState("")
+    const [listOfExercises, setListOfExercises] = useState([])
     
     useEffect(()=>{
         fetch(workoutsAPI)
         .then(response=>response.json())
         .then((data)=>{
-            setWorkoutData(data)
+            data.map((d)=>{
+                d.workout.map((ex)=>{
+                    setListOfExercises(prev=>[...prev, ex])
+                })
+            })
             console.log(data)
         })
     }, [])
+
+    function test(){
+        console.log(listOfExercises)
+    }
+
 
     //ToDo: Make it so the user can search by a specific exercise and it'll display all of those workouts in chronological order
 
@@ -26,6 +36,8 @@ function Progress(){
                 <label htmlFor="exercise">Exercise</label>
                 <input type="text" placeholder="exercise" value={searchedExercise} id="exercise" onChange={(e)=>setSearchedExercise(e.target.value)}/>
             </form>
+            
+            <button onClick={test}>Testing</button>
         </>
     )
 }
