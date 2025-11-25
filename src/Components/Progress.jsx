@@ -1,6 +1,8 @@
 import NavigationBar from "./NavigationBar"
+import ExerciseDisplay from "./ExerciseDisplay"
 import { useContext, useEffect, useState } from "react"
 import { UsernameContext } from "../UsernameContext"
+import {v4 as uuidv4} from "uuid"
 
 function Progress(){
     const workoutsAPI = `https://6924d26482b59600d7217be2.mockapi.io/jamieab98workouts`
@@ -12,6 +14,7 @@ function Progress(){
         fetch(workoutsAPI)
         .then(response=>response.json())
         .then((data)=>{
+            setListOfExercises([])
             data.map((d)=>{
                 d.workout.map((ex)=>{
                     setListOfExercises(prev=>[...prev, ex])
@@ -36,7 +39,9 @@ function Progress(){
                 <label htmlFor="exercise">Exercise</label>
                 <input type="text" placeholder="exercise" value={searchedExercise} id="exercise" onChange={(e)=>setSearchedExercise(e.target.value)}/>
             </form>
-            
+            {listOfExercises.map((exercise)=>(
+                <ExerciseDisplay key={uuidv4()} exercise={exercise}/>
+            ))}
             <button onClick={test}>Testing</button>
         </>
     )
