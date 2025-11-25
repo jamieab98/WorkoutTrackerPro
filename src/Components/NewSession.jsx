@@ -1,4 +1,5 @@
 import NavigationBar from "./NavigationBar"
+import { useNavigate } from "react-router-dom"
 import { useState } from "react"
 import { v4 as uuidv4 } from "uuid"
 
@@ -10,6 +11,7 @@ function NewSession(){
     const [exerciseReps, setExerciseReps] = useState(0)
     const [exerciseDate, setExerciseDate] = useState("")
     const [workout, setWorkout] = useState([])
+    const navigate = useNavigate()
 
     function enterExercise(e){
         e.preventDefault()
