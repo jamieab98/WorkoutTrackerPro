@@ -19,7 +19,7 @@ function Home(){
         <>
             <NavigationBar/>
             <h2>Home Page</h2>
-            <p>Welcome {username}!</p>
+            <p>Welcome!</p>
             {workoutData.map((day)=>(
                 <DailyWorkout day={day} key={day.id}/>
             ))}
