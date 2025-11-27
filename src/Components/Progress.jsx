@@ -9,6 +9,7 @@ function Progress(){
     const {workoutData, setWorkoutData} = useContext(UsernameContext)
     const [searchedExercise, setSearchedExercise] = useState("")
     const [listOfExercises, setListOfExercises] = useState([])
+    const [filteredExercies, setFilteredExercies] = useState([])
     
     useEffect(()=>{
         fetch(workoutsAPI)
@@ -24,7 +25,15 @@ function Progress(){
     }, [])
 
     function test(){
-        console.log(listOfExercises)
+        console.log(searchedExercise)
+    }
+
+    function handleFilter(e){
+        console.log(e.target.value)
+        setSearchedExercise(e.target.value)
+        setFilteredExercies(listOfExercises.filter((exercise)=>(
+            exercise.exercise.includes(e.target.value)
+        )))
     }
 
 
@@ -36,9 +45,9 @@ function Progress(){
             <h2>Progress Page</h2>
             <form>
                 <label htmlFor="exercise">Exercise</label>
-                <input type="text" placeholder="exercise" value={searchedExercise} id="exercise" onChange={(e)=>setSearchedExercise(e.target.value)}/>
+                <input type="text" placeholder="exercise" value={searchedExercise} id="exercise" onChange={(e)=>handleFilter(e)}/>
             </form>
-            {listOfExercises.map((exercise)=>(
+            {filteredExercies.map((exercise)=>(
                 <ExerciseDisplay key={uuidv4()} exercise={exercise}/>
             ))}
             <button onClick={test}>Testing</button>
